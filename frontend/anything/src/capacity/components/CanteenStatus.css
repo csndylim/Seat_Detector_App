@@ -1,0 +1,4 @@
+.canteen-status-table {
+    display: flex;
+    justify-content: space-evenly;
+}
