@@ -1,4 +1,18 @@
+.canteen-status-table-wrappper {
+    margin: auto;
+    font-size: 1.5rem;
+}
+
 .canteen-status-table {
     display: flex;
-    justify-content: space-evenly;
+    text-align: center;
+    margin: 1em 2em;
+}
+
+.canteen-section-header{
+    font-weight: bold;
+}
+
+.canteen-status-header {
+    font-weight: bold;
 }

@@ -46,7 +46,6 @@ const CanteenStatus = props => {
     useEffect(() => {
         const total = data.reduce((x, y) => {
             const { available, occupied, overcapacity, blocked } = y;
-            console.log(x)
             x.available += available;
             x.occupied += occupied;
             x.overcapacity += overcapacity;
@@ -70,7 +69,7 @@ const CanteenStatus = props => {
                     <table className="canteen-status-table">
                         <tbody>
                             <tr>
-                                <td>
+                                <td className="canteen-section-header">
                                     {section}
                                 </td>
                             </tr>
@@ -103,7 +102,7 @@ const CanteenStatus = props => {
 
     const status = STATUS.map((items, idx) => 
         <tr key={idx}>
-            <td>
+            <td className="canteen-status-header">
                 {items}
             </td>
         </tr>
@@ -111,7 +110,7 @@ const CanteenStatus = props => {
 
     return (
         <div>
-            <table>
+            <table className="canteen-status-table-wrappper">
                 <tbody>
                     <tr>
                         <td>
@@ -126,7 +125,6 @@ const CanteenStatus = props => {
                     </tr>
                 </tbody>
             </table>
-
         </div>
     )
 };
