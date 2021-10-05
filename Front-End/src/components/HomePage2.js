@@ -16,6 +16,7 @@ import {SeatContext} from "../contexts/SeatContext";
 import crudFirebase from '../services/crudFirebase'
 import { useCollection } from "react-firebase-hooks/firestore";
 import Loading from "./common/Loading";
+import LiveMap from "./components/livemap/LiveMap";
 
 function HomePage() {
   const [seats, setSeats] = useContext(SeatContext);
@@ -35,13 +36,10 @@ function HomePage() {
       !loading&&seats?
     <div>
       <Pane className={'bgPane'}>
+      <LiveMap />
         <div>
           <Pane className={'headingPane'}>
-            <h1>Welcome to Lee Wee Nam Library</h1>
-          </Pane>
-          <Pane className={'masterPane'}>
-              <Stats seats={seats}/>
-            
+          <Stats seats={seats}/>
           </Pane>
         </div>
       </Pane>

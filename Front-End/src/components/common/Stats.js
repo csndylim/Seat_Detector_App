@@ -1,19 +1,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      Name: Stats.js                                                                                                  //
-//    Author: Hou Jing                                                                                                  //
+//    Author: Candy                                                                                                 //
 //  Function: Exports component for Stats Pane. The seat information is passed in via props.                            //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React, {useState} from 'react'
-import Chart from 'react-google-charts'
-import {
-    Pane, SegmentedControl
-} from "evergreen-ui";
+import {Pane} from "evergreen-ui";
 import './Stats.css';
-import Component from "@reactions/component";
-import Colors from "../Configuration/Colors";
 
 export default function Stats(props){
+
+    const STATUS = ["Status", "Available", "Occupied", "OverCapacity", "Blocked"];
 
     const [statsSel, setStatsSel]=useState({val: 0});
 
@@ -21,61 +18,102 @@ export default function Stats(props){
     // Takes in an array of object [seats]
     // Returns an object [stats]
     function countStats(seats) {
-        let stats = {total: 0, avail: 0,occupied: 0, reserved: 0, hogged: 0, unavail: 0,};
+        let statsA = {total: 0, available: 0, occupied: 0, overcapacity: 0, blocked: 0,};
+        let statsB = {total: 0, available: 0, occupied: 0, overcapacity: 0, blocked: 0,};
+        let statsC = {total: 0, available: 0, occupied: 0, overcapacity: 0, blocked: 0,};
+        let statsD = {total: 0, available: 0, occupied: 0, overcapacity: 0, blocked: 0,};
         let i;
-        stats.total=seats.length;
-        for (i = 0; i < seats.length; i++){
-            if(seats[i].unavailable==true) stats.unavail++;
-            else
-            {
-                if (seats[i].status == 'Available') stats.avail++;
-                else if (seats[i].status == 'Occupied') stats.occupied++;
-                else if (seats[i].status == 'OverCapacity') stats.reserved++;
-                else if (seats[i].status == 'Blocked') stats.hogged++;
-            }
 
+        let stats = {statsA, statsB, statsC, statsD};
+        stats.total=seats.length;
+
+        for (i = 0; i < seats.length; i++){
+            if(seats[i].section=="A")
+            {
+                if (seats[i].status == 'Available') {statsA.available++;}
+                else if (seats[i].status == 'Occupied') {statsA.occupied++;}
+                else if (seats[i].status == 'OverCapacity') {statsA.overcapacity++;}
+                else if (seats[i].status == 'Blocked') {statsA.blocked++;}
+            }else if (seats[i].section=="B")
+            {
+                if (seats[i].status == 'Available') {statsB.available++;}
+                else if (seats[i].status == 'Occupied') {statsB.occupied++;}
+                else if (seats[i].status == 'OverCapacity') {statsB.overcapacity++;}
+                else if (seats[i].status == 'Blocked') {statsB.blocked++;}
+            }else if (seats[i].section=="C")
+            {
+                if (seats[i].status == 'Available') {statsC.available++;}
+                else if (seats[i].status == 'Occupied') {statsC.occupied++;}
+                else if (seats[i].status == 'OverCapacity') {statsC.overcapacity++;}
+                else if (seats[i].status == 'Blocked') {statsC.blocked++;}
+            }else            
+            {
+                if (seats[i].status == 'Available') {statsD.available++;}
+                else if (seats[i].status == 'Occupied') {statsD.occupied++;}
+                else if (seats[i].status == 'OverCapacity') {statsD.overcapacity++;}
+                else if (seats[i].status == 'Blocked') {statsD.blocked++;}
         }
-        return (stats);
+    }
+        return stats;
     }
 
-    // Function to filter seats based on selected level
-    // Takes all seats [props.seats] and selected level [statsSel.val] as input
-    // Returns filtered seats as [levelSeats]
-    const levelSeats = (statsSel.val==0 ? props.seats : props.seats.filter(seat => seat.level === statsSel.val.toString()));
-    //console.log(levelSeats);
-
+    const levelSeats = props.seats;
     let stats = countStats(levelSeats);
 
     return(
       <div>
-          {/* Segmented Control Bar*/}
-          <p className={'seatAvailText'} >Table Availability: <b>{(stats.avail/stats.total*100).toFixed(2)}%</b></p>
+          <p className={'seatAvailText'} >Canteen Capacity: <b>{((stats.statsA.available + stats.statsB.available + stats.statsC.available + stats.statsD.available)/stats.total*100).toFixed(2)}%</b></p>
 
           <Pane className={'statsTablePane'} border={'default'}>
               <table>
                   <tbody>
                       <tr>
                           <th>Status</th>
-                          <th>No. of Seats</th>
+                          <th>A</th>
+                          <th>B</th>
+                          <th>C</th>
+                          <th>D</th>
+                          <th>Total</th>
                       </tr>
                       <tr>
                           <td>Available</td>
-                          <td>{stats.avail}</td>
-                      </tr>
-                      <tr>
-                          <td>OverCapacity</td>
-                          <td>{stats.reserved}</td>
+                          <td>{stats.statsA.available}</td>
+                          <td>{stats.statsB.available}</td>
+                          <td>{stats.statsC.available}</td>
+                          <td>{stats.statsD.available}</td>
+                          <td>{stats.statsA.available + stats.statsB.available + stats.statsC.available + stats.statsD.available}</td>
                       </tr>
                       <tr>
                           <td>Occupied</td>
-                          <td>{stats.occupied}</td>
+                          <td>{stats.statsA.occupied}</td>
+                          <td>{stats.statsB.occupied}</td>
+                          <td>{stats.statsC.occupied}</td>
+                          <td>{stats.statsD.occupied}</td>
+                          <td>{stats.statsA.occupied + stats.statsB.occupied + stats.statsC.occupied + stats.statsD.occupied}</td>
                       </tr>
                       <tr>
+                          <td>OverCapacity</td>
+                          <td>{stats.statsA.overcapacity}</td>
+                          <td>{stats.statsB.overcapacity}</td>
+                          <td>{stats.statsC.overcapacity}</td>
+                          <td>{stats.statsD.overcapacity}</td>
+                          <td>{stats.statsA.overcapacity + stats.statsB.overcapacity + stats.statsC.overcapacity + stats.statsD.overcapacity}</td>
+                      </tr>
+
+                      <tr>
                           <td>Blocked</td>
-                          <td>{stats.hogged}</td>
+                          <td>{stats.statsA.blocked}</td>
+                          <td>{stats.statsB.blocked}</td>
+                          <td>{stats.statsC.blocked}</td>
+                          <td>{stats.statsD.blocked}</td>
+                          <td>{stats.statsA.blocked + stats.statsB.blocked + stats.statsC.blocked + stats.statsD.blocked}</td>
                       </tr>
                       <tr className={'total'}>
-                          <td>Total Seats</td>
+                          <td>Total Tables</td>
+                          <td>{stats.statsA.available + stats.statsA.occupied + stats.statsA.overcapacity + stats.statsA.blocked}</td>
+                          <td>{stats.statsB.available + stats.statsB.occupied + stats.statsB.overcapacity + stats.statsB.blocked}</td>
+                          <td>{stats.statsC.available + stats.statsC.occupied + stats.statsC.overcapacity + stats.statsC.blocked}</td>
+                          <td>{stats.statsD.available + stats.statsD.occupied + stats.statsD.overcapacity + stats.statsD.blocked}</td>
                           <td>{stats.total}</td>
                       </tr>
                   </tbody>

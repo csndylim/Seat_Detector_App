@@ -17,7 +17,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Routes from "./components/Routes";
 import SuccessBookingPage from "./components/SeatBookingRelated/SuccessBookingPage";
 import OccupancyReportPage from "./components/AccountRelated/OccupancyReportPage";
-import Candy from "./components/HomePage2";
 
 function App() {
 
@@ -48,7 +47,6 @@ function App() {
             <Route path="/Login" component={LoginPage} />
             <Route path="/CreateAccount"component={CreateAccountPage} />
             <Route path="/ForgetPassword" component={ForgetPasswordPage} />
-            <Route path="/Candy" component={Candy} />
             <Routes path="/MyBookings" component={MyBookingsPage} />
             <Routes path="/Account" component={AccountMgmtPage} />
             <Routes path="/SeatInformation" component={SeatInformationPage} />
