@@ -2,13 +2,13 @@ const firebase = require('firebase');
 
 const db  = firebase.initializeApp(
     {
-        apiKey: "AIzaSyBMDsS786CU9bbNB3TD-yuIT-eEYE_x2Wo",
-        authDomain: "anythingase-6a8d7.firebaseapp.com",
-        projectId: "anythingase-6a8d7",
-        storageBucket: "anythingase-6a8d7.appspot.com",
-        messagingSenderId: "524491645779",
-        appId: "1:524491645779:web:1dc852c52599c3cffdf7a6",
-        measurementId: "G-76DSMM8BJ1"      
+        apiKey: "AIzaSyCSpEdAkTWd2HMTcY-cTeppis3K963HJH0",
+        authDomain: "smartlib-66322.firebaseapp.com",
+        projectId: "smartlib-66322",
+        storageBucket: "smartlib-66322.appspot.com",
+        messagingSenderId: "469013252936",
+        appId: "1:469013252936:web:346ee2436f298ae191417d",
+        measurementId: "G-LGSWT5K4MV"
     }
 )
 
