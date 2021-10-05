@@ -12,13 +12,13 @@ import "firebase/auth"
 
 //Shared Acc
 const app = firebase.initializeApp({
-        apiKey: "AIzaSyBMDsS786CU9bbNB3TD-yuIT-eEYE_x2Wo",
-        authDomain: "anythingase-6a8d7.firebaseapp.com",
-        projectId: "anythingase-6a8d7",
-        storageBucket: "anythingase-6a8d7.appspot.com",
-        messagingSenderId: "524491645779",
-        appId: "1:524491645779:web:1dc852c52599c3cffdf7a6",
-        measurementId: "G-76DSMM8BJ1"      
+        apiKey: "AIzaSyDBhrO6JEbVl8fd2s-zovBMM18ZbPsGQZo",
+        authDomain: "anything-b35f8.firebaseapp.com",
+        projectId: "anything-b35f8",
+        storageBucket: "anything-b35f8.appspot.com",
+        messagingSenderId: "415478575296",
+        appId: "1:415478575296:web:484aa80b63797a8eeafd25",
+        measurementId: "G-MS685E56T5"  
 })
 
 export const auth = app.auth()
