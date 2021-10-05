@@ -19,7 +19,7 @@ import Loading from "./common/Loading";
 
 function HomePage() {
   const [seats, setSeats] = useContext(SeatContext);
-  const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Seats'));
+  const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
 
   useEffect(()=> {
     if(!loading&&dataFS) {
@@ -40,15 +40,8 @@ function HomePage() {
             <h1>Welcome to Lee Wee Nam Library</h1>
           </Pane>
           <Pane className={'masterPane'}>
-            <Pane className={'statsPane'} border={'default'}>
-              <h2 className={'sectionHeading'}>Statistics</h2>
-
               <Stats seats={seats}/>
-            </Pane>
-            <Pane className={'mapSelectorPane'} border="default">
-              <h2 className={'sectionHeading'}>Live Seat Map</h2>
-              <MapSelectorPane />
-            </Pane>
+            
           </Pane>
         </div>
       </Pane>

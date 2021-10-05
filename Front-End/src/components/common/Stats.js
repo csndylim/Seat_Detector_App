@@ -29,9 +29,9 @@ export default function Stats(props){
             else
             {
                 if (seats[i].status == 'Available') stats.avail++;
-                else if (seats[i].status == 'Occupied' || seats[i].status == 'Detected') stats.occupied++;
-                else if (seats[i].status == 'Reserved') stats.reserved++;
-                else if (seats[i].status == 'Hogged') stats.hogged++;
+                else if (seats[i].status == 'Occupied') stats.occupied++;
+                else if (seats[i].status == 'OverCapacity') stats.reserved++;
+                else if (seats[i].status == 'Blocked') stats.hogged++;
             }
 
         }
@@ -49,57 +49,8 @@ export default function Stats(props){
     return(
       <div>
           {/* Segmented Control Bar*/}
-          <Pane className={'segmentedControlPane'}>
-              <Component
-                  initialState={{
-                      options: [
-                          { label: "Overall", value: 0 },
-                          { label: "Level 2", value: 2 },
-                          { label: "Level 3", value: 3 },
-                          { label: "Level 4", value: 4 },
-                          { label: "Level 5", value: 5 },
-                      ],
-                      value: 0,
-                  }}
-              >
-                  {({ state, setState }) => (
-                      <SegmentedControl
-                          className={'segmentedControl'}
-                          options={state.options}
-                          value={state.value}
-                          onChange={(value) => { setState({ value }); setStatsSel({val: value})}}
-                      />
-                  )}
-              </Component>
-          </Pane>
+          <p className={'seatAvailText'} >Table Availability: <b>{(stats.avail/stats.total*100).toFixed(2)}%</b></p>
 
-          <p className={'seatAvailText'} >Seat Availability: <b>{(stats.avail/stats.total*100).toFixed(2)}%</b></p>
-          <Pane className={'statsChartPane'}>
-              <Chart
-                  className={'statsChart'}
-                  chartType="PieChart"
-                  loader={<div>Loading Chart</div>}
-                  data={[
-                      ['Status', 'No. of Seats'],
-                      ['Available', stats.avail],
-                      ['Reserved', stats.reserved],
-                      ['Occupied', stats.occupied],
-                      ['Hogged', stats.hogged],
-                      ['Unavailable', stats.unavail]
-                  ]}
-                  options={{
-                      pieStartAngle: -90,
-                      slices: {
-                          0: { color: Colors.colorAvailable },
-                          1: { color: Colors.colorReserved },
-                          2: { color: Colors.colorOccupied },
-                          3: { color: Colors.colorHogged },
-                          4: { color: Colors.colorUnavailable },
-                      },
-                  }}
-                  rootProps={{ 'data-testid': '1' }}
-              />
-          </Pane>
           <Pane className={'statsTablePane'} border={'default'}>
               <table>
                   <tbody>
@@ -112,7 +63,7 @@ export default function Stats(props){
                           <td>{stats.avail}</td>
                       </tr>
                       <tr>
-                          <td>Reserved</td>
+                          <td>OverCapacity</td>
                           <td>{stats.reserved}</td>
                       </tr>
                       <tr>
@@ -120,12 +71,8 @@ export default function Stats(props){
                           <td>{stats.occupied}</td>
                       </tr>
                       <tr>
-                          <td>Hogged</td>
+                          <td>Blocked</td>
                           <td>{stats.hogged}</td>
-                      </tr>
-                      <tr>
-                          <td>Unavailable</td>
-                          <td>{stats.unavail}</td>
                       </tr>
                       <tr className={'total'}>
                           <td>Total Seats</td>

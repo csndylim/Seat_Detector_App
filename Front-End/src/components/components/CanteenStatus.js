@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import './CanteenStatus.css';
 
 const dummy_data = [
