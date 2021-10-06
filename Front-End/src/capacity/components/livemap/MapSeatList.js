@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MapSeat from "./MapSeat";
 
 import './MapSeatList.css';
@@ -23,7 +23,13 @@ const DUMMY_DATA = [
 ]
 
 const MapSeatList = () => {
-    const renderSeats = DUMMY_DATA.map((seat) => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        setData(DUMMY_DATA)
+    }, [data])
+
+    const renderSeats = data.map((seat) => {
         return (
             <MapSeat seat={seat} key={seat.id}/>
         )
