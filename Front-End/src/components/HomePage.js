@@ -16,7 +16,7 @@ import {SeatContext} from "../contexts/SeatContext";
 import crudFirebase from '../services/crudFirebase'
 import { useCollection } from "react-firebase-hooks/firestore";
 import Loading from "./common/Loading";
-import LiveMap from "./components/livemap/LiveMap";
+import LiveMap from "../capacity/components/liveMap/LiveMap";
 
 function HomePage() {
   const [seats, setSeats] = useContext(SeatContext);
