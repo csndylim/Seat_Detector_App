@@ -1,36 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MapSeat from "./MapSeat";
 
 import './MapSeatList.css';
 
+import {SeatContext} from "../SeatContext";
+import crudFirebase from '../../../services/crudFirebase'
+import { useCollection } from "react-firebase-hooks/firestore";
+
+
 const svgViewWidth = 1000;
 const svgViewHeight = 500;
 
-const DUMMY_DATA = [
-    {
-    cameraId: "CamA",
-    id: "A3",
-    section: "A",
-    status: "Available",
-    xSvg: 20,
-    ySvg: 20
-    },
-    {
-        cameraId: "CamA",
-        id: "A2",
-        section: "B",
-        status: "Available",
-        xSvg: 150,
-        ySvg: 40
-    }
-]
 
-const MapSeatList = () => {
+export default function MapSeatList(){
+    const [seats, setSeats] = useContext(SeatContext);
+    const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
+
     const [data, setData] = useState([])
 
     useEffect(() => {
-        setData(DUMMY_DATA)
-    }, [data])
+        if(!loading&&dataFS) {
+            let events = [];
+            dataFS.forEach((doc) => events.push(doc.data()));
+            setSeats(events);
+            setData(events);
+        }
+    }, [dataFS])
 
     const renderSeats = data.map((seat) => {
         return (
@@ -52,5 +47,3 @@ const MapSeatList = () => {
         </div>
     )
 }
-
-export default MapSeatList;

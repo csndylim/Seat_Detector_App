@@ -1,12 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Pane} from "evergreen-ui";
 import './CanteenStatus.css';
 
 export default function CanteenStatus(props){
-
-    const STATUS = ["Status", "Available", "Occupied", "OverCapacity", "Blocked"];
-
-    const [statsSel, setStatsSel]=useState({val: 0});
 
     // Function to convert list of seats to individual number of seats of each status.
     // Takes in an array of object [seats]
@@ -49,16 +45,14 @@ export default function CanteenStatus(props){
         }
     }
         return stats;
-    }
+}
 
     const levelSeats = props.seats;
     let stats = countStats(levelSeats);
 
     return(
         <div>
-
           <p className={'seatAvailText'} >Canteen Capacity: <b>{((stats.statsA.available + stats.statsB.available + stats.statsC.available + stats.statsD.available)/stats.total*100).toFixed(2)}%</b></p>
-
           <Pane className={'statsTablePane'} border={'default'}>
               <table>
                   <tbody>
@@ -114,7 +108,6 @@ export default function CanteenStatus(props){
                   </tbody>
               </table>
           </Pane>
-          
       </div>
     );
 }
