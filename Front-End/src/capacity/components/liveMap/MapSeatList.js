@@ -13,19 +13,21 @@ const DUMMY_DATA = [
     section: "A",
     status: "Available",
     xSvg: 20,
-    ySvg: 20
+    ySvg: 20,
+    blocked: false
     },
     {
         cameraId: "CamA",
         id: "A2",
         section: "B",
-        status: "Available",
+        status: "Blocked",
         xSvg: 150,
-        ySvg: 40
+        ySvg: 40,
+        blocked: true
     }
 ]
 
-const MapSeatList = () => {
+const MapSeatList = props => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -34,7 +36,13 @@ const MapSeatList = () => {
 
     const renderSeats = data.map((seat) => {
         return (
-            <MapSeat seat={seat} key={seat.id}/>
+            <MapSeat
+                seat={seat}
+                key={seat.id}
+                modify={props.modify}
+                setTablesToBlock={props.setTablesToBlock}
+                setTablesToUnblock={props.setTablesToUnblock}
+            />
         )
     })
 
