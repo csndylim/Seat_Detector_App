@@ -1,5 +1,8 @@
 .svg-container {
     background-image: url("../../../img/random.jpg");
+    max-width: min(1000px, 70vw);
+    display: block;
+    margin: auto;
 }
 
 .section-header {
