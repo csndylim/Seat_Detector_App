@@ -1,18 +1,23 @@
-.canteen-status-table-wrappper {
-    margin: auto;
-    font-size: 1.2rem;
-}
 
-.canteen-status-table {
-    display: flex;
+.statsTablePane{
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+table{
+    width: 100%;
+}
+.seatAvailText{
     text-align: center;
-    margin: 1em 2em;
+    padding: 15px;
+    font-size:20px;
 }
 
-.canteen-section-header{
-    font-weight: bold;
+th,td{
+    text-align: center;
+    padding: 5px;
+}
+.total{
+    text-decoration: underline;
 }
 
-.canteen-status-header {
-    font-weight: bold;
-}
