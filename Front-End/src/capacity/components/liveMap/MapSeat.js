@@ -19,7 +19,7 @@ const MapSeat = props => {
                 case "Occupied":
                     setBackgroundColor(Colors.colorOccupied);
                     break;
-                case "Overoccupied":
+                case "OverCapacity":
                     setBackgroundColor(Colors.colorOveroccupied);
                     break;
                 case "Blocked":

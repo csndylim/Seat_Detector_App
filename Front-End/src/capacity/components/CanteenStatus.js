@@ -36,16 +36,16 @@ export default function CanteenStatus(props){
                 else if (seats[i].status == 'Occupied') {statsC.occupied++;}
                 else if (seats[i].status == 'OverCapacity') {statsC.overcapacity++;}
                 else if (seats[i].status == 'Blocked') {statsC.blocked++;}
-            }else            
+            }else if (seats[i].section=="D")           
             {
                 if (seats[i].status == 'Available') {statsD.available++;}
                 else if (seats[i].status == 'Occupied') {statsD.occupied++;}
                 else if (seats[i].status == 'OverCapacity') {statsD.overcapacity++;}
                 else if (seats[i].status == 'Blocked') {statsD.blocked++;}
+            }
         }
-    }
         return stats;
-}
+    }
 
     const levelSeats = props.seats;
     let stats = countStats(levelSeats);

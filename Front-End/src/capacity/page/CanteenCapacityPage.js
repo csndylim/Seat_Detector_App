@@ -26,7 +26,7 @@ function CanteenCapacityPage() {
         !loading&&seats?
       <div>
         <Pane className={'bgPane'}>
-        <LiveMap seats ={seats}/>
+        <LiveMap/>
         <MapLegends />
           <div>
             <Pane className={'headingPane'}>
