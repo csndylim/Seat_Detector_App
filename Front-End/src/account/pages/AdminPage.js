@@ -39,6 +39,7 @@ const AdminPage = () => {
 
     const handleSubmit = () => {
         console.log(tablesToBlock)
+        console.log(tablesToUnblock)
     }
 
     return (
