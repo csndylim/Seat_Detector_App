@@ -2,17 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { SeatProvider } from './capacity/components/SeatContext'
 import reportWebVitals from './reportWebVitals';
-import { SeatProvider } from './contexts/SeatContext'
-import { SelectedSeatProvider } from './contexts/SelectSeatContext';
-
 ReactDOM.render(
   // <React.StrictMode>
-    <SelectedSeatProvider>
       <SeatProvider>
           <App />
       </SeatProvider>
-    </SelectedSeatProvider>
   // </React.StrictMode>
   ,document.getElementById('root')
 );
