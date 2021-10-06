@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Pane} from "evergreen-ui";
-import './CanteenStatus2.css';
+import './CanteenStatus.css';
 
 export default function CanteenStatus(props){
 
@@ -55,7 +55,8 @@ export default function CanteenStatus(props){
     let stats = countStats(levelSeats);
 
     return(
-      <div>
+        <div>
+
           <p className={'seatAvailText'} >Canteen Capacity: <b>{((stats.statsA.available + stats.statsB.available + stats.statsC.available + stats.statsD.available)/stats.total*100).toFixed(2)}%</b></p>
 
           <Pane className={'statsTablePane'} border={'default'}>
@@ -113,6 +114,7 @@ export default function CanteenStatus(props){
                   </tbody>
               </table>
           </Pane>
+          
       </div>
     );
 }
