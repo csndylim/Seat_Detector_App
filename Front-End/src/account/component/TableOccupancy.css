@@ -1,0 +1,16 @@
+.set-occupancy-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.set-occupancy-button {
+    border: none;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.set-occupancy-button:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.247);
+}

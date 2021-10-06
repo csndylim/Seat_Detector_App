@@ -1,0 +1,21 @@
+.admin-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-btn-submit {
+    background-color: rgb(30, 172, 12);
+    padding: 10px;
+    margin: 0 40px 40px 0;
+    font-weight: bold;
+    color: rgb(253, 244, 244);
+    border-radius: 5px;
+    font-size: min(1.25rem, 5vw);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.admin-btn-submit:hover {
+    background-color: rgba(36, 180, 16, 0.801);
+}
