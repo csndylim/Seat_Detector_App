@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import { Pane } from "evergreen-ui";
 import CanteenStatus from "../components/CanteenStatus";
-import LiveMap from "../components/livemap/LiveMap";
+import LiveMap from "../components/liveMap/LiveMap";
 import MapLegends from "../components/MapLegends";
 
 import {SeatContext} from "../components/SeatContext";
