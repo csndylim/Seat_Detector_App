@@ -1,5 +1,7 @@
-.map-container {
-    display: flex;
-    border: 1px solid red;
-    margin: 5rem 5rem 0 5rem;
+.stage-container {
+    margin: 3em 1.5em 0 1.5em;
+}
+
+.seats-container {
+    cursor: pointer;
 }
