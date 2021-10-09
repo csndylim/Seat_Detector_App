@@ -3,7 +3,11 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AdminPage from './account/pages/AdminPage';
 
 import CanteenCapacityPage from './capacity/page/CanteenCapacityPage';
+import Footer from './footer/Footer';
 import Login from './login/page/Login';
+import Navbar from './navigation/Navbar';
+
+import './App.css';
 
 const App = () => {
 
@@ -26,9 +30,17 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            {routes}
+            <div className="page-container">
+                <div className="content-wrapper">
+                    <Navbar />
+                    <main className="main-wrapper">
+                        { routes }
+                    </main>
+                </div>
+                <Footer />
+            </div>
         </BrowserRouter>
-  );
+    );
 }
 
 export default App;

@@ -18,30 +18,30 @@ export default function CanteenStatus(props){
         stats.total=seats.length;
 
         for (i = 0; i < seats.length; i++){
-            if(seats[i].section=="A")
+            if(seats[i].section ==="A")
             {
-                if (seats[i].status == 'Available') {statsA.available++;}
-                else if (seats[i].status == 'Occupied') {statsA.occupied++;}
-                else if (seats[i].status == 'OverCapacity') {statsA.overcapacity++;}
-                else if (seats[i].status == 'Blocked') {statsA.blocked++;}
-            }else if (seats[i].section=="B")
+                if (seats[i].status === 'Available') {statsA.available++;}
+                else if (seats[i].status === 'Occupied') {statsA.occupied++;}
+                else if (seats[i].status === 'OverCapacity') {statsA.overcapacity++;}
+                else if (seats[i].status === 'Blocked') {statsA.blocked++;}
+            }else if (seats[i].section ==="B")
             {
-                if (seats[i].status == 'Available') {statsB.available++;}
-                else if (seats[i].status == 'Occupied') {statsB.occupied++;}
-                else if (seats[i].status == 'OverCapacity') {statsB.overcapacity++;}
-                else if (seats[i].status == 'Blocked') {statsB.blocked++;}
-            }else if (seats[i].section=="C")
+                if (seats[i].status === 'Available') {statsB.available++;}
+                else if (seats[i].status === 'Occupied') {statsB.occupied++;}
+                else if (seats[i].status === 'OverCapacity') {statsB.overcapacity++;}
+                else if (seats[i].status === 'Blocked') {statsB.blocked++;}
+            }else if (seats[i].section ==="C")
             {
-                if (seats[i].status == 'Available') {statsC.available++;}
-                else if (seats[i].status == 'Occupied') {statsC.occupied++;}
-                else if (seats[i].status == 'OverCapacity') {statsC.overcapacity++;}
-                else if (seats[i].status == 'Blocked') {statsC.blocked++;}
-            }else if (seats[i].section=="D")           
+                if (seats[i].status === 'Available') {statsC.available++;}
+                else if (seats[i].status === 'Occupied') {statsC.occupied++;}
+                else if (seats[i].status === 'OverCapacity') {statsC.overcapacity++;}
+                else if (seats[i].status === 'Blocked') {statsC.blocked++;}
+            }else if (seats[i].section ==="D")           
             {
-                if (seats[i].status == 'Available') {statsD.available++;}
-                else if (seats[i].status == 'Occupied') {statsD.occupied++;}
-                else if (seats[i].status == 'OverCapacity') {statsD.overcapacity++;}
-                else if (seats[i].status == 'Blocked') {statsD.blocked++;}
+                if (seats[i].status === 'Available') {statsD.available++;}
+                else if (seats[i].status === 'Occupied') {statsD.occupied++;}
+                else if (seats[i].status === 'OverCapacity') {statsD.overcapacity++;}
+                else if (seats[i].status === 'Blocked') {statsD.blocked++;}
             }
         }
         return stats;

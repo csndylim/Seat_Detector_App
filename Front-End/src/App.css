@@ -1,0 +1,16 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.content-wrapper {
+    flex: 1;
+    padding-bottom: 3rem;
+    min-height: 100vh;
+}
+
+.main-wrapper {
+    margin-top: 0.5em;
+}
+

@@ -1,0 +1,19 @@
+.footer-container {
+    background-color: #EBECFE;
+    display: flex;
+    flex-direction: column;
+    white-space: pre-line;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3em 0;
+    color:  #181C62;
+}
+
+.footer-logo-wrapper {
+    font-weight: 400;
+}
+
+.footer-logo {
+    padding: 0em 2em;
+}

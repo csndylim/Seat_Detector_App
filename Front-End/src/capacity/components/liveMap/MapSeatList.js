@@ -12,7 +12,7 @@ const svgViewWidth = 1000;
 const svgViewHeight = 500;
 
 
-export default function MapSeatList(){
+export default function MapSeatList(props) {
     const [seats, setSeats] = useContext(SeatContext);
     const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
 
@@ -29,7 +29,13 @@ export default function MapSeatList(){
 
     const renderSeats = data.map((seat) => {
         return (
-            <MapSeat seat={seat} key={seat.id}/>
+            <MapSeat
+                seat={seat}
+                key={seat.id}
+                modify={props.modify}
+                setTablesToBlock={props.setTablesToBlock}
+                setTablesToUnblock={props.setTablesToUnblock}
+            />
         )
     })
 
