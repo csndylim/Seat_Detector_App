@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import Loading from "../../capacity/components/Loading";
+import { SeatContext } from "../../capacity/components/SeatContext";
+import crudFirebase from "../../services/crudFirebase";
 
 import ModifyTables from "../component/ModifyTables";
 import TableOccupancy from "../component/TableOccupancy";
@@ -28,13 +32,23 @@ const DUMMY_DATA_SEAT = [
 
 const AdminPage = () => {
     const [tableLimit, setTableLimit] = useState()
-    const [seats, setSeats] = useState()
+    // const [seats, setSeats] = useState()
     const [tablesToBlock, setTablesToBlock] = useState([]);
     const [tablesToUnblock, setTablesToUnblock] = useState([]);
+    const [seats, setSeats] = useContext(SeatContext);
+
+    const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
+
+    useEffect(() => {
+        if(!loading&&dataFS) {
+            let events = [];
+            dataFS.forEach((doc) => events.push(doc.data()));
+            setSeats(events);
+        }
+    }, [dataFS, loading, setSeats])
 
     useEffect(() => {
         setTableLimit(DUMMY_TABLE_LIMIT)
-        setSeats(DUMMY_DATA_SEAT)
     }, [])
 
     const handleSubmit = () => {
@@ -43,13 +57,15 @@ const AdminPage = () => {
     }
 
     return (
-        <div>
+        !loading && seats
+        ? <div>
             <TableOccupancy tableLimit={tableLimit} setTableLimit={setTableLimit}/>
             <ModifyTables seats={seats} setSeats={setSeats} setTablesToBlock={setTablesToBlock} setTablesToUnblock={setTablesToUnblock}/>
             <div className="admin-btn-container">
                 <button className="admin-btn-submit" onClick={handleSubmit}>Save Changes</button>
             </div>
         </div>
+        : <Loading />
     )
 }
 

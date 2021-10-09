@@ -1,31 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import MapSeat from "./MapSeat";
 
 import './MapSeatList.css';
-
-import {SeatContext} from "../SeatContext";
-import crudFirebase from '../../../services/crudFirebase'
-import { useCollection } from "react-firebase-hooks/firestore";
-
 
 const svgViewWidth = 1000;
 const svgViewHeight = 500;
 
 
 export default function MapSeatList(props) {
-    const [seats, setSeats] = useContext(SeatContext);
-    const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
 
     const [data, setData] = useState([])
 
     useEffect(() => {
-        if(!loading&&dataFS) {
-            let events = [];
-            dataFS.forEach((doc) => events.push(doc.data()));
-            setSeats(events);
-            setData(events);
-        }
-    }, [dataFS])
+        console.log(data)
+        console.log(props.seatList)
+        setData(props.seatList)
+    }, [props])
 
     const renderSeats = data.map((seat) => {
         return (

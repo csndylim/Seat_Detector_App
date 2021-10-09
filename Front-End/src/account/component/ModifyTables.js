@@ -11,7 +11,7 @@ const ModifyTables = props => {
                 Click on any of the tables to block or unblock
             </div>
             <div>
-                <MapSeatList modify={true} setTablesToBlock={props.setTablesToBlock} setTablesToUnblock={props.setTablesToUnblock}/>
+                <MapSeatList modify={true} setTablesToBlock={props.setTablesToBlock} setTablesToUnblock={props.setTablesToUnblock} seatList={props.seats}/>
             </div>
         </div>
     )
