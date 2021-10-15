@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Loading from "../../capacity/components/Loading";
 import { SeatContext } from "../../capacity/components/SeatContext";
-import crudFirebase from "../../services/crudFirebase";
 import app from '../../services/firebase'
 
 
@@ -19,7 +18,7 @@ function AdminPage () {
     const [tablesToUnblock, setTablesToUnblock] = useState([]);
     const [seats, setSeats] = useContext(SeatContext);
 
-    const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
+    const [dataFS, loading, error] = useCollection(app.firestore().collection('Tables'));
     
     useEffect(() => {
         app.firestore().collection('TableCapacity').doc("canteen1TableCapacity").onSnapshot((doc) => {
@@ -29,9 +28,6 @@ function AdminPage () {
             }
         );
     }, [])
-
-
-
 
 
     useEffect(() => {
