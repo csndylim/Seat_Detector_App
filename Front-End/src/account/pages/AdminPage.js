@@ -19,9 +19,9 @@ function AdminPage () {
     // Get the current table limit from firebase
     useEffect(() => {
         app.firestore().collection('TableCapacity').doc("canteen1TableCapacity").onSnapshot((doc) => {
-            let retrievefromDB = doc.data()
-            const TABLE_LIMIT = retrievefromDB.seatsPerTable;
-            setTableLimit(TABLE_LIMIT);
+            let db = doc.data()
+            const old_tableLimit = db.seatsPerTable;
+            setTableLimit(old_tableLimit);
             }
         );
     }, [])
@@ -47,6 +47,17 @@ function AdminPage () {
         )}
 
         app.firestore().collection('TableCapacity').doc("canteen1TableCapacity").update({seatsPerTable : tableLimit});
+
+        // Print message 
+        let msg = ("Table limit is changed to ".concat(tableLimit.toString())).concat("\n")
+        if (tablesToBlock.length >0) {
+            msg = msg.concat(("New blocked tables: ".concat(tablesToBlock)).concat("\n"))
+        }
+        if (tablesToUnblock.length >0) {
+            msg = msg.concat(("New unblocked tables: ".concat(tablesToUnblock)).concat("\n"))
+        }
+        window.alert(msg)
+
     }
 
     return (
