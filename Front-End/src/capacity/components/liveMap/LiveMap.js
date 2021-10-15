@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import crudFirebase from "../../../services/crudFirebase";
+import app from '../../../services/firebase'
 
 import { SeatContext } from "../SeatContext";
 import './LiveMap.css';
@@ -9,7 +9,7 @@ import MapSeatList from "./MapSeatList";
 const LiveMap = () => {
     const [seats, setSeats] = useContext(SeatContext);
 
-    const [dataFS, loading, error] = useCollection(crudFirebase.getAll('Tables'));
+    const [dataFS, loading, error] = useCollection(app.firestore().collection('Tables'));
 
     useEffect(() => {
         if(!loading&&dataFS) {

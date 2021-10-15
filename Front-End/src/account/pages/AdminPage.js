@@ -4,12 +4,9 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import Loading from "../../capacity/components/Loading";
 import { SeatContext } from "../../capacity/components/SeatContext";
 import app from '../../services/firebase'
-
-
 import ModifyTables from "../component/ModifyTables";
 import TableOccupancy from "../component/TableOccupancy";
 import './AdminPage.css';
-
 
 function AdminPage () {
 
@@ -17,9 +14,9 @@ function AdminPage () {
     const [tablesToBlock, setTablesToBlock] = useState([]);
     const [tablesToUnblock, setTablesToUnblock] = useState([]);
     const [seats, setSeats] = useContext(SeatContext);
-
     const [dataFS, loading, error] = useCollection(app.firestore().collection('Tables'));
     
+    // Get the current table limit from firebase
     useEffect(() => {
         app.firestore().collection('TableCapacity').doc("canteen1TableCapacity").onSnapshot((doc) => {
             let retrievefromDB = doc.data()
@@ -29,7 +26,7 @@ function AdminPage () {
         );
     }, [])
 
-
+    // Get the current tables' status from firebase
     useEffect(() => {
         if(!loading&&dataFS) {
             let events = [];
@@ -39,22 +36,15 @@ function AdminPage () {
     }, [dataFS, loading, setSeats])
 
 
+    // Update the data to the firebase
     const handleSubmit = () => { 
         for (let i = 0; i < tablesToBlock.length; i++) {
-            app.firestore().collection('Tables').doc(tablesToBlock[i]).update(
-                {
-                    status : "Blocked"
-                }
-            )
-          }
+            app.firestore().collection('Tables').doc(tablesToBlock[i]).update({status : "Blocked" }
+        )}
        
           for (let i = 0; i < tablesToUnblock.length; i++) {
-            app.firestore().collection('Tables').doc(tablesToUnblock[i]).update(
-                {
-                    status : "Available"
-                }
-            )
-          }
+            app.firestore().collection('Tables').doc(tablesToUnblock[i]).update({status : "Available"}
+        )}
 
         app.firestore().collection('TableCapacity').doc("canteen1TableCapacity").update({seatsPerTable : tableLimit});
     }
