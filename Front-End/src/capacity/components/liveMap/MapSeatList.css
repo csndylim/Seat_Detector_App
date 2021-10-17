@@ -1,6 +1,7 @@
 .svg-container {
-    background-image: url("../../../img/random.jpg");
-    max-width: min(1000px, 70vw);
+    background-image: url("../../../img/canteenlayout.jpg");
+    width: 883px;
+    height: 874px;
     display: block;
     margin: auto;
 }

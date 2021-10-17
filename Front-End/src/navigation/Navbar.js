@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="navbar">
             <Link to="/module" className="logo">
                 <div className="logo">
-                    <img class ="logoImg" src={logoimg}/>
+                    <img className ="logoImg" src={logoimg} alt="logo"/>
                 </div>
             </Link>
         </nav>
