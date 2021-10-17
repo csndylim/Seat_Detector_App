@@ -15,9 +15,7 @@ const TableOccupancy = props => {
 
     return (
         <div className="set-occupancy-container">
-            <div>
                 1. Set Table Occupancy Limit: 
-            </div>
             <div className ="occupancy-counter">
                 <span>
                     <button type="button" onClick={decreaseOccupancyHandler} className="set-occupancy-button"><FaChevronDown className="set-occupancy-icons"/></button>
