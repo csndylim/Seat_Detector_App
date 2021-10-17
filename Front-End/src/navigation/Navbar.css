@@ -1,15 +1,21 @@
 .navbar {
-    background-color: #EBECFE;
+    background-color: #9E3611;
     height:10vh;
     width: 100%;
     display: flex;
-    color: #181C62;
+    color: #F8F8F8;
     align-items: center;
 }
 
 .logo {
+    position:relative;
     display: flex;
+    background-size: contain;
     margin: 0 1.5em;    
     text-decoration: none;
-    color: #181C62;
+    color: #F8F8F8;
+}
+
+.logoImg{
+    width: 7%;
 }
