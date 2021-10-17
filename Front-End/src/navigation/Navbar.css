@@ -1,6 +1,6 @@
 .navbar {
     background-color: #9E3611;
-    height:10vh;
+    height:6vh;
     width: 100%;
     display: flex;
     color: #F8F8F8;
@@ -17,5 +17,5 @@
 }
 
 .logoImg{
-    width: 10%;
+    width: 7%;
 }
