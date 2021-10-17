@@ -6,7 +6,7 @@ const boxRy = 10;
 const boxHeight = 70;
 const boxWidth = 70;
 
-const MapSeat = props => {
+export default function MapSeat(props) {
     const [seat, setSeat] = useState(props.seat);
     const [backgroundColor, setBackgroundColor] = useState("");
 
@@ -36,6 +36,7 @@ const MapSeat = props => {
                 setBackgroundColor(Colors.colorError);
             }
         }
+        setSeat(props.seat)
     }, [props, seat])
 
     // Render color according to status
@@ -111,5 +112,3 @@ const MapSeat = props => {
         </g>
     );
 }
-
-export default MapSeat;

@@ -57,7 +57,8 @@ function AdminPage () {
             msg = msg.concat(("New unblocked tables: ".concat(tablesToUnblock)).concat("\n"))
         }
         window.alert(msg)
-
+        tablesToBlock.length = 0
+        tablesToUnblock.length = 0
     }
 
     return (
