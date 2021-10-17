@@ -16,15 +16,18 @@ const TableOccupancy = props => {
     return (
         <div className="set-occupancy-container">
             <div>
-                Table Occupancy Limit: {props.tableLimit}
+                1. Set Table Occupancy Limit: 
             </div>
-            <div>
-                <div className="button-container">
-                    <button type="button" onClick={increaseOccupancyHandler} className="set-occupancy-button"><FaChevronUp className="set-occupancy-icons"/></button>
-                </div>
-                <div className="button-container">
+            <div className ="occupancy-counter">
+                <span>
                     <button type="button" onClick={decreaseOccupancyHandler} className="set-occupancy-button"><FaChevronDown className="set-occupancy-icons"/></button>
-                </div>
+                </span>
+                <span>
+                    {props.tableLimit}
+                </span>
+                <span>
+                    <button type="button" onClick={increaseOccupancyHandler} className="set-occupancy-button"><FaChevronUp className="set-occupancy-icons"/></button>
+                </span>
             </div>
         </div>
     )

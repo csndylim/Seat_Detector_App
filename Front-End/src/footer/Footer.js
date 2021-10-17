@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css';
-import logoimg from "./../logo3.png";
+import logoimg from "./../img/logo3.png";
 
 const Footer = () => {
     return (
@@ -11,7 +11,7 @@ const Footer = () => {
                 </span>
             </div>
             <div>
-                An intelligent system to manage crowd levels {'\n\n'}  
+                An intelligent system to manage crowd levels. {'\n\n'}  
                 Developed by Team Anything, maintained by students. {'\n'}
                 &copy;{new Date().getFullYear()}-Present, CanSeat. {'\n'}
                 All rights reserved. CanSeat version 1.0

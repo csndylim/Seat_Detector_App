@@ -1,6 +1,7 @@
+
 .set-occupancy-container {
-    display: flex;
-    align-items: center;
+    font-weight: bold;
+    text-align: center;
     font-size: 1.25rem;
 }
 
@@ -13,4 +14,16 @@
 .set-occupancy-button:hover {
     cursor: pointer;
     background-color: rgba(128, 128, 128, 0.247);
+}
+
+.instruction{
+    text-align: center;
+    font-weight:bold;
+    padding-bottom: 30px;
+    font-size: 1.25rem;
+}
+
+.occupancy-counter{
+    text-decoration: underline;
+    font-weight:lighter;
 }

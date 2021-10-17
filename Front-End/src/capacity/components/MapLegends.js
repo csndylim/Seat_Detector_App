@@ -16,7 +16,7 @@ const MapLegends = () => {
             </div>
             <div className="map-legends-wrapper">
                 <FaSquare style={{color: "red"}} className="map-icons"/>
-                <span>Overoccupied</span>
+                <span>OverCapacity</span>
             </div>
             <div className="map-legends-wrapper">
                 <FaSquare style={{color: "grey"}} className="map-icons"/>

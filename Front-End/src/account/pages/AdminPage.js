@@ -7,6 +7,7 @@ import app from '../../services/firebase'
 import ModifyTables from "../component/ModifyTables";
 import TableOccupancy from "../component/TableOccupancy";
 import './AdminPage.css';
+import MapLegends from "../component/MapLegends";
 
 function AdminPage () {
 
@@ -66,6 +67,7 @@ function AdminPage () {
         ? <div>
             <TableOccupancy tableLimit={tableLimit} setTableLimit={setTableLimit}/>
             <ModifyTables seats={seats} setSeats={setSeats} setTablesToBlock={setTablesToBlock} setTablesToUnblock={setTablesToUnblock}/>
+            <MapLegends />
             <div className="admin-btn-container">
                 <button className="admin-btn-submit" onClick={handleSubmit}>Save Changes</button>
             </div>
