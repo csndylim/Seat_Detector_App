@@ -8,6 +8,7 @@ import {SeatContext} from "../components/SeatContext";
 import Loading from "../components/Loading";
 import app from '../../services/firebase'
 import { useCollection } from "react-firebase-hooks/firestore";
+import TrendContainer from "../components/trendcontainer/TrendContainer";
 
 function CanteenCapacityPage() {
     const [seats, setSeats] = useContext(SeatContext);
@@ -30,6 +31,7 @@ function CanteenCapacityPage() {
         <MapLegends />
           <div>
             <Pane className={'headingPane'}>
+            <TrendContainer />
             <CanteenStatus seats={seats}/>
             </Pane>
           </div>

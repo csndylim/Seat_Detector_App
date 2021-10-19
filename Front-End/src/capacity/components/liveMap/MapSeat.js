@@ -39,26 +39,6 @@ export default function MapSeat(props) {
         setSeat(props.seat)
     }, [props, seat])
 
-    // Render color according to status
-    //     if (!props.modify) {
-    //         switch (status) {
-    //             case "Available": return Colors.colorAvailable;
-    //             case "Occupied": return Colors.colorOccupied;
-    //             case "Overoccupied": return Colors.colorOveroccupied;
-    //             case "Blocked": return Colors.colorBlocked;
-    //             default: return Colors.colorError;
-    //         }
-    //     }
-    //     else {
-    //         if (seat.status === "Blocked") {
-    //             return Colors.colorBlocked
-    //         } else {
-    //             return Colors.colorError;
-    //         }
-    //     }
-
-    // }
-
     // Set SelectedSeatContext to current seat upon click
     const clickSeat = () => {
         console.log(seat)
