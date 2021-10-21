@@ -7,7 +7,12 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
     const auth = useContext(AuthContext);
-    console.log(auth)
+
+    const logoutHandler = () => {
+        auth.logout()
+        auth.setCurrentUser(null);
+    }
+
     return (
         <nav className="navbar">
             <Link to="/module" className="logo">
@@ -15,11 +20,19 @@ const Navbar = () => {
                     <img className ="logoImg" src={logoimg} alt="logo"/>
                 </div>
             </Link>
+            <div>
             {auth.currentUser
-                ? <Link to="/admin" className="logo">
-                Admin
-            </Link>
+                ? <div>
+                <Link to="/admin" className="nav-links">
+                    Admin
+                </Link>
+                <Link to="/" onClick={logoutHandler} className="nav-links">
+                    Logout
+                </Link>
+            </div>
             : null}
+            </div>
+
 
         </nav>
     )

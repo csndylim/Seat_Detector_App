@@ -20,3 +20,14 @@
 .logoImg{
     width: min(120px, 20vw);
 }
+
+.nav-links {
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 0 0.25em
+}
+
+.nav-links:hover {
+    text-decoration: none;
+    color: whitesmoke;
+}
