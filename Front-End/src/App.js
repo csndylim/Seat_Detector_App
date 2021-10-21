@@ -4,7 +4,7 @@ import AdminPage from './account/pages/AdminPage';
 
 import CanteenCapacityPage from './capacity/page/CanteenCapacityPage';
 import Footer from './footer/Footer';
-import Login from './login/page/Login';
+import Form from './login/Form';
 import Navbar from './navigation/Navbar';
 
 import './App.css';
@@ -19,7 +19,7 @@ const App = () => {
                 <CanteenCapacityPage />
             </Route>
             <Route path="/login" exact>
-                <Login />
+                <Form />
             </Route>
             <Route path="/admin" exact>
                 <AdminPage />
