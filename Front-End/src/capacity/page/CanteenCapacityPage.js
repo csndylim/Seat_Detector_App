@@ -18,7 +18,7 @@ function CanteenCapacityPage() {
       if(!loading&&dataFS) {
         let events = [];
         dataFS.forEach((doc) => events.push(doc.data()));
-        console.log(events);
+        // console.log(events);
         setSeats(events);
       }
     },[dataFS]);

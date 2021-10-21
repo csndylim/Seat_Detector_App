@@ -41,10 +41,10 @@ export default function MapSeat(props) {
 
     // Set SelectedSeatContext to current seat upon click
     const clickSeat = () => {
-        console.log(seat)
+        // console.log(seat)
         if (seat.status === "Blocked") {
             props.setTablesToUnblock(prevState => {
-                console.log(prevState)
+                // console.log(prevState)
                 if (prevState.includes(seat.id)) {
                     prevState.splice(prevState.indexOf(seat.id), 1)
                     setBackgroundColor(Colors.colorBlocked);
@@ -57,7 +57,7 @@ export default function MapSeat(props) {
             return
         }
         props.setTablesToBlock(prevState => {
-            console.log(prevState)
+            // console.log(prevState)
             if (prevState.includes(seat.id)) {
                 prevState.splice(prevState.indexOf(seat.id), 1)
                 setBackgroundColor(Colors.colorError);

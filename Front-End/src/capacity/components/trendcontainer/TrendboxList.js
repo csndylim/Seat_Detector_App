@@ -23,7 +23,7 @@ const TrendBoxList = () => {
 
     const lineIndicator = [50, 93, 125, 156, 188, 220, 253, 285, 317, 350, 382, 413, 445, 485].map((item, idx) => {
         return (
-            <line x1={item} y1={205} x2={item} y2={215} style={{stroke:"grey", strokeWidth: 1}} />
+            <line x1={item} y1={205} x2={item} y2={215} style={{stroke:"grey", strokeWidth: 1}} key={idx}/>
         );
     });
 

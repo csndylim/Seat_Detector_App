@@ -12,8 +12,8 @@ export default function MapSeatList(props) {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        console.log(data)
-        console.log(props.seatList)
+        // console.log(data)
+        // console.log(props.seatList)
         setData(props.seatList)
     }, [props])
 

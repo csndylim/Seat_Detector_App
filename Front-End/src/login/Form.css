@@ -146,11 +146,7 @@
     color: #fff;
     width: 80%;
     text-align: center;
+    cursor: pointer;
   }
   
-  .form-input-login a {
-    text-decoration: none;
-    color: #27cdff;
-    font-weight: 600;
-  }
   

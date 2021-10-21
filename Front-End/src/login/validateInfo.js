@@ -3,24 +3,24 @@
 export default function validateInfo(values) {
     let errors={}
 
-    if(!values.username.trim()){
-        errors.username= 'username required'}
-    else if (values.username.length < 6) {      //add here for username validation
-        errors.username = 'Username/Passwwords are invalid'}
+    if(!values.email){
+        errors.email= 'email required'}                 //if no email is received
+    else if (!/\S+@\S+\.\S+/.test(values.email)) {      //if email is invalid format
+        errors.email = 'Email address is invalid'}
 
     if (!values.password) {
         errors.password = 'Password is required'} 
     else if (values.password.length < 6) {      //add here for password validation
-        errors.password = 'Username/Passwwords are invalid'}
+        errors.password = 'Email/Passwwords are invalid'}
 
     return errors;
     
 
 }
 
-    //if(!values.email){
+    // if(!values.email){
     //    errors.email= 'email required'}                 //if no email is received
-    //else if (!/\S+@\S+\.\S+/.test(values.email)) {      //if email is invalid format
+    // else if (!/\S+@\S+\.\S+/.test(values.email)) {      //if email is invalid format
     //    errors.email = 'Email address is invalid'}
 
         //if (!values.password2) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AdminPage from './account/pages/AdminPage';
 
@@ -8,38 +8,65 @@ import Form from './login/Form';
 import Navbar from './navigation/Navbar';
 
 import './App.css';
+import { AuthContext } from './context/AuthContext';
+import { useAuth } from './capacity/components/hooks/auth-hook';
 
 const App = () => {
-
+    const { login, logout, currentUser, signup, resetPassword} = useAuth();
+    const auth = useContext(AuthContext);
     let routes;
 
-    routes = (
-        <Switch>
-            <Route path="/" exact>
-                <CanteenCapacityPage />
-            </Route>
-            <Route path="/login" exact>
-                <Form />
-            </Route>
-            <Route path="/admin" exact>
-                <AdminPage />
-            </Route>
-            <Redirect to="/" />
-        </Switch>
-    )
-
+    if (auth.isLoggedIn) {
+        routes = (
+            <Switch>
+                <Route path="/" exact>
+                    <CanteenCapacityPage />
+                </Route>
+                <Route path="/admin" exact>
+                    <AdminPage />
+                </Route>
+                <Redirect to="/" />
+            </Switch>
+        )
+    } else {
+        routes = (
+            <Switch>
+                <Route path="/" exact>
+                    <CanteenCapacityPage />
+                </Route>
+                <Route path="/login" exact>
+                    <Form />
+                </Route>
+                <Redirect to="/" />
+            </Switch>
+        )
+    }
+    
     return (
-        <BrowserRouter>
-            <div className="page-container">
-                <div className="content-wrapper">
-                    <Navbar />
-                    <main className="main-wrapper">
-                        { routes }
-                    </main>
-                </div>
-                <Footer />
-            </div>
-        </BrowserRouter>
+        <AuthContext.Provider
+            value={
+                {
+                    isLoggedIn: !!currentUser,
+                    currentUser: currentUser,
+                    login: login,
+                    logout: logout,
+                    signup: signup,
+                    resetPassword: resetPassword
+                }
+            }
+        >
+            <BrowserRouter>
+                    <div className="page-container">
+                        <div className="content-wrapper">
+                            <Navbar />
+                            <main className="main-wrapper">
+                                { routes }
+                            </main>
+                        </div>
+                        <Footer />
+                    </div>
+            </BrowserRouter>
+        </AuthContext.Provider>
     );
 }
 
