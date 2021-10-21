@@ -12,11 +12,10 @@ import { AuthContext } from './context/AuthContext';
 import { useAuth } from './capacity/components/hooks/auth-hook';
 
 const App = () => {
-    const { login, logout, currentUser, signup, resetPassword, isLoggedIn} = useAuth();
+    const { login, logout, currentUser, signup, resetPassword, setCurrentUser} = useAuth();
     
     let routes;
-    console.log(isLoggedIn)
-    if (isLoggedIn) {
+    if (!!currentUser) {
         routes = (
             <Switch>
                 <Route path="/" exact>
@@ -46,12 +45,12 @@ const App = () => {
         <AuthContext.Provider
             value={
                 {
-                    isLoggedIn: !!isLoggedIn,
                     currentUser: currentUser,
                     login: login,
                     logout: logout,
                     signup: signup,
                     resetPassword: resetPassword,
+                    setCurrentUser: setCurrentUser
                 }
             }
         >

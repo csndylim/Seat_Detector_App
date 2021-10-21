@@ -31,16 +31,28 @@ const useForm = (validate, isSignUp, setIsSubmitted, isResetPassword) => {
         setIsSubmitting(true)
         if (Object.keys(errors).length ===0 && isSumbitting) {
             if (isSignUp) {
-                if (auth.signup) {
+                try {
+                    await auth.signup(values.email, values.password, values.password2)
+                    const results = await auth.login(values.email, values.password)
+                    auth.setCurrentUser(results.user.uid)
                     setIsSubmitted(true)
+                } catch (err) {
+                    alert(err.message)
                 }
             } else if (isResetPassword) {
-                if (auth.resetPassword) {
+                try {
+                    await auth.resetPassword(values.email)
                     setIsSubmitted(true)
+                } catch (err) {
+                    alert(err.message)
                 }
             } else {
-                if (auth.login) {
-                    setIsSubmitted(true);
+                try {
+                    const results = await auth.login(values.email, values.password)
+                    auth.setCurrentUser(results.user.uid)
+                    setIsSubmitted(true)
+                } catch (err) {
+                    alert(err.message)
                 }
             }
         }
