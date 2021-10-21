@@ -36,5 +36,5 @@ export const useAuth = () => {
         return unsubscribe //Will unsubscribe the auth component when we unmount this component
     }, [])
 
-    return { currentUser, login, logout, signup, resetPassword };
+    return { currentUser, login, logout, signup, resetPassword, setCurrentUser };
 }

@@ -1,6 +1,7 @@
 //custom hooks need to start with USE
 
 import {useState, useEffect, useContext} from 'react'
+import { useAuth } from '../capacity/components/hooks/auth-hook';
 import { AuthContext } from '../context/AuthContext';
 
 
@@ -31,21 +32,23 @@ const useForm = (validate, isSignUp, setIsSubmitted, isResetPassword) => {
         if (Object.keys(errors).length ===0 && isSumbitting) {
             if (isSignUp) {
                 try {
-                    await auth.login(values.email, values.password)
+                    const results = await auth.signup(values.email, values.password, values.password2)
+                    auth.setCurrentUser(results.user.uid)
                     setIsSubmitted(true)
                 } catch (err) {
                     alert(err.message)
                 }
             } else if (isResetPassword) {
                 try {
-                    await auth.resetPassword(values.email)
+                    const results = await auth.resetPassword(values.email)
                     setIsSubmitted(true)
                 } catch (err) {
                     alert(err.message)
                 }
             } else {
                 try {
-                    await auth.signup(values.email, values.password, values.password2)
+                    const results = await auth.login(values.email, values.password)
+                    auth.setCurrentUser(results.user.uid)
                     setIsSubmitted(true)
                 } catch (err) {
                     alert(err.message)

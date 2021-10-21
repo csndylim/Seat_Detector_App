@@ -12,11 +12,11 @@ import { AuthContext } from './context/AuthContext';
 import { useAuth } from './capacity/components/hooks/auth-hook';
 
 const App = () => {
-    const { login, logout, currentUser, signup, resetPassword} = useAuth();
-    const auth = useContext(AuthContext);
+    const { login, logout, currentUser, signup, resetPassword, setCurrentUser} = useAuth();
+    
     let routes;
 
-    if (auth.isLoggedIn) {
+    if (currentUser) {
         routes = (
             <Switch>
                 <Route path="/" exact>
@@ -25,7 +25,7 @@ const App = () => {
                 <Route path="/admin" exact>
                     <AdminPage />
                 </Route>
-                <Redirect to="/" />
+                {/* <Redirect to="/" /> */}
             </Switch>
         )
     } else {
@@ -37,7 +37,7 @@ const App = () => {
                 <Route path="/login" exact>
                     <Form />
                 </Route>
-                <Redirect to="/" />
+                {/* <Redirect to="/" /> */}
             </Switch>
         )
     }
@@ -51,7 +51,8 @@ const App = () => {
                     login: login,
                     logout: logout,
                     signup: signup,
-                    resetPassword: resetPassword
+                    resetPassword: resetPassword,
+                    setCurrentUser: setCurrentUser
                 }
             }
         >

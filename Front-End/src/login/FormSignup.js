@@ -81,7 +81,7 @@ const FormSignup = props => {
                 }
                 
                 <button className='form-input-btn' type='submit'>
-                    Login 
+                    {isResetPassword ? "Reset Password" : (isSignUp ? "Sign up" : "Login")}
                 </button>
                 <span className='form-input-login' onClick={changeSignUpHandler}>
                     Not an admin? Seek admin privileges here
