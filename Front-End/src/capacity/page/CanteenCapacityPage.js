@@ -31,8 +31,8 @@ function CanteenCapacityPage() {
         <MapLegends />
           <div>
             <Pane className={'headingPane'}>
-            <TrendContainer />
             <CanteenStatus seats={seats}/>
+            <TrendContainer />
             </Pane>
           </div>
         </Pane>

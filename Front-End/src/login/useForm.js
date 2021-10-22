@@ -29,6 +29,9 @@ const useForm = (validate, isSignUp, setIsSubmitted, isResetPassword) => {
         e.preventDefault()
         setErrors(validate(values))
         setIsSubmitting(true)
+        console.log("what is", isResetPassword)
+        console.log("what is sign up", isSignUp)
+        
         if (Object.keys(errors).length ===0 && isSumbitting) {
             if (isSignUp) {
                 try {
@@ -36,39 +39,36 @@ const useForm = (validate, isSignUp, setIsSubmitted, isResetPassword) => {
                     const results = await auth.login(values.email, values.password)
                     auth.setCurrentUser(results.user.uid)
                     setIsSubmitted(true)
+                    window.alert("Sign up is successful.")
                 } catch (err) {
                     alert(err.message)
                 }
-            } else if (isResetPassword) {
-                try {
-                    await auth.resetPassword(values.email)
-                    setIsSubmitted(true)
-                } catch (err) {
-                    alert(err.message)
-                }
-            } else {
+            }
+            else {
                 try {
                     const results = await auth.login(values.email, values.password)
                     auth.setCurrentUser(results.user.uid)
                     setIsSubmitted(true)
+                    window.alert("Login is successful.")
+                } catch (err) {
+                    alert(err.message)
+                }
+            }
+        } else{
+            if (isResetPassword == true) {
+                console.log("before submitted")
+                try {
+                    await auth.resetPassword(values.email)
+                    setIsSubmitted(true)
+                    console.log("after submitted")
+                    window.alert("Please check your email to reset password.")
                 } catch (err) {
                     alert(err.message)
                 }
             }
         }
-    }
+}
 
-    // useEffect( ()=> {
-    //     if (Object.keys(errors).length ===0 && isSumbitting) {
-    //         if (isSignUp) {
-    //             callback()
-    //         } else {
-    //             callback(values.email, values.password)
-    //         }
-    //     }
-    // },
-    // [errors]
-    // )
     return {handleChange, values, handleSubmit,errors}
 
 }
