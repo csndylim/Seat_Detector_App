@@ -1,7 +1,6 @@
 ### Introduction 
 Software stack:
 - Firebase (database)
-- Express
 - React 
 - Node Js
 
